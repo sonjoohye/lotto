@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Again My Life LOTTO</title>
+    <link rel="stylesheet" href="css/layout.css" />
+    <!-- 왼쪽 익스텐션에서 live sass compiler(glenn marks) 설치 -->
+    <!-- 타입스크립트도 html에서 인식 못하니까 자바스크립트로 바꿔서 쓰는데.. 그거랑 똑같다. -->
+    <!-- BEM 방법론도 한 번 검색해서 볼 것. scss랑 섞어서 많이 쓴다고 한다. -->
+  </head>
+  <body>
+    <header>
+      <h1>again my life lotto</h1>
+    </header>
+    <main>
+      <div class="btns">
+        <label>
+          <input type="radio" value="1" name="lotto" checked />
+          <span>1</span>
+        </label>
+        <label>
+          <input type="radio" value="2" name="lotto" />
+          <span>2</span>
+        </label>
+        <label>
+          <input type="radio" value="3" name="lotto" />
+          <span>3</span>
+        </label>
+        <label>
+          <input type="radio" value="4" name="lotto" />
+          <span>4</span>
+        </label>
+        <label>
+          <input type="radio" value="5" name="lotto" />
+          <span>5</span>
+        </label>
+      </div>
+
+      <div class="paper">
+        <ul>
+          <!-- <li></li> -->
+        </ul>
+      </div>
+    </main>
+
+    <script>
+      // 1~46까지 숫자 중 6회를 무작위로 뽑는다.
+      //  숫자가 중복되어 뽑힐 수 있는데 이럴 때 배열을 사용한다. 배열에서 뽑고 나서  뽑운 숫자를 제외해준다.
+      // 배열 [1,2,3,4,5,6...46]
+      //   parseInt(Math.random() * 45 + 1); // 0 < Math.random() *46+1 < 1 *46
+      const paper = document.querySelector(".paper > ul");
+      const btns = document.querySelectorAll(".btns input");
+      console.log("🚀 ~ file: index.html:54 ~  btns", btns);
+
+      btns.forEach(function (item, i) {
+        item.addEventListener("change", function () {
+          for (let j = 0; j < i; j++) {}
+        });
+      });
+
+      const nums = [];
+      const lotto = [];
+      for (let i = 1; i <= 45; i++) {
+        // 빈 배열 nums에 i 변수를 밀어넣는다. (뒤로 밀어넣는거라 기존 데이터 안지워지고 맨 뒤에 붙는다.)
+        nums.push(i);
+        // 빈 배열 nums에 i 변수를 밀어넣는 건 똑같다. 근데 unshift() 는 앞으로 밀어넣는 거라 맨 앞에 붙는다. (push()랑 순서가 반대이다.)
+        // 그래서 기존에 있던 자료들이 다 뒤로 밀리니까 unshift()는 거의 사용하지 않는다.
+        // nums.unshift(i);
+      }
+
+      for (let i = 0; i < 6; i++) {
+        // console.log((nums[Math.floor(Math.random() * 46)]));
+        // pop() 이렇게 하면 배열에서 제일 뒤에 있는 값 한 개만 들고 오는 것. (push()랑 반대로 작동한다.
+        // 이렇게 작업하면 뽑는 값이 중복되지 않는다. 이렇게 하면 된다.
+        const selected = nums
+          .splice(Math.floor(Math.random() * nums.length), 1)
+          .pop();
+
+        lotto.push(selected);
+      }
+
+      //   정렬할 때는 sort(function(first,second){});
+      lotto.sort(function (first, second) {
+        //   if (first > second) {
+        //     return 1;
+        //   } else if ((first, second)) {
+        //     return -1;
+        //   } else {
+        //     return 0;
+        //   }
+
+        // 조건문 복잡하게 안써도 이렇게 쓰면 결과는 똑같다.
+        return first - second;
+        //   내림차순으로 하고 싶으면 return second - first; 해주면 된다.
+      });
+
+      lotto.forEach(function (item) {
+        let color = "";
+        if (item <= 10) {
+          color = "yellow";
+        } else if (item <= 20) {
+          color = "blue";
+        } else if (item <= 30) {
+          color = "red";
+        } else if (item <= 40) {
+          color = "black";
+        } else {
+          color = "green";
+        }
+
+        paper.innerHTML += `<li class="${color}">${item}</li>`;
+      });
+      //   const animals = ["lion", "tiger", "horse"];
+      //   const spliceItem = animals.splice(1, 2); // 1번째 것부터 2개를 찢어서 가지고 나오겠다.
+      //   console.log(spliceItem);
+      //   console.log(animals);
+    </script>
+  </body>
+</html>

@@ -52,20 +52,32 @@ header {
 
 .paper {
   width: 80%;
-  min-height: 300px;
+  height: 0px;
   margin: 50px auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  //   transform: scaleY(0); //높이를 일단 0으로...
+  //   transform-origin: 50% 0;
   background-color: #fff;
+  overflow: hidden;
+
+  &.on {
+    // transform: scaleY(1); //높이 다시 1로
+    transition: all 0.5s ease;
+    height: 300px;
+  }
 
   ul {
     display: flex;
     width: 100%;
     gap: 10px;
+    flex-wrap: wrap;
 
     li {
-      width: calc(100% / 6); //100을 6으로 나눔 (원래 calc()쓰는 것처럼..
+      width: calc(
+        (100% - 50px) / 6
+      ); //100을 6으로 나눔 (원래 calc()쓰는 것처럼..
       aspect-ratio: 1 / 1; // 1:1 로 높이값을 줌. 가로세로 비율 똑같이 맞춰줌 (비율로 높이값 조정 가능)
       border-radius: 100%;
       display: flex;
@@ -77,7 +89,7 @@ header {
 
       background: #fff;
       &.yellow {
-        background-color: rgb(211, 211, 20);
+        background-color: rgb(211, 144, 20);
       }
       &.blue {
         background-color: rgb(28, 28, 177);
