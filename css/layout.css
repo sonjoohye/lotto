@@ -25,6 +25,33 @@ header h1 {
   text-transform: uppercase;
 }
 
+.btns {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 10px;
+}
+.btns input[type=radio] {
+  display: none;
+}
+.btns input[type=radio]:checked ~ span {
+  background-color: red;
+}
+.btns span {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  width: 40px;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #111;
+  color: #fff;
+  border-radius: 100%;
+}
+
 .paper {
   width: 80%;
   min-height: 300px;
