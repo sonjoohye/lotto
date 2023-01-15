@@ -30,7 +30,7 @@
       const paper = document.querySelector(".paper > ul");
       const nums = [];
       const lotto = [];
-      for (let i = 1; i <= 46; i++) {
+      for (let i = 1; i <= 45; i++) {
         // 빈 배열 nums에 i 변수를 밀어넣는다. (뒤로 밀어넣는거라 기존 데이터 안지워지고 맨 뒤에 붙는다.)
         nums.push(i);
         // 빈 배열 nums에 i 변수를 밀어넣는 건 똑같다. 근데 unshift() 는 앞으로 밀어넣는 거라 맨 앞에 붙는다. (push()랑 순서가 반대이다.)
@@ -65,7 +65,20 @@
       });
 
       lotto.forEach(function (item) {
-        paper.innerHTML += `<li>${item}</li>`;
+        let color = "";
+        if (item <= 10) {
+          color = "yellow";
+        } else if (item <= 20) {
+          color = "blue";
+        } else if (item <= 30) {
+          color = "red";
+        } else if (item <= 40) {
+          color = "black";
+        } else {
+          color = "green";
+        }
+
+        paper.innerHTML += `<li class="${color}">${item}</li>`;
       });
       //   const animals = ["lion", "tiger", "horse"];
       //   const spliceItem = animals.splice(1, 2); // 1번째 것부터 2개를 찢어서 가지고 나오겠다.

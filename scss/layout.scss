@@ -26,10 +26,11 @@ header {
 .paper {
   width: 80%;
   min-height: 300px;
-  margin: auto;
+  margin: 50px auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #fff;
 
   ul {
     display: flex;
@@ -44,7 +45,25 @@ header {
       justify-content: center;
       align-items: center;
 
+      color: #fff;
+      font-weight: bold;
+
       background: #fff;
+      &.yellow {
+        background-color: rgb(211, 211, 20);
+      }
+      &.blue {
+        background-color: rgb(28, 28, 177);
+      }
+      &.red {
+        background-color: rgb(194, 22, 22);
+      }
+      &.black {
+        background-color: black;
+      }
+      &.green {
+        background-color: rgb(11, 122, 11);
+      }
     }
   }
 }
