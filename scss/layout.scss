@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #333;
+}
+ul,
+li {
+  list-style: none;
+}
+
+header {
+  height: 50px;
+  background: #fff;
+  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 18px;
+    text-transform: uppercase; //대문자로 바꿔주는 것
+  }
+}
+
+.paper {
+  width: 80%;
+  min-height: 300px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ul {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+
+    li {
+      width: calc(100% / 6); //100을 6으로 나눔 (원래 calc()쓰는 것처럼..
+      aspect-ratio: 1 / 1; // 1:1 로 높이값을 줌. 가로세로 비율 똑같이 맞춰줌 (비율로 높이값 조정 가능)
+      border-radius: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background: #fff;
+    }
+  }
+}
